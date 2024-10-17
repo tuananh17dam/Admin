@@ -13,6 +13,8 @@ class SanPham extends Model
 
     protected $fillable = [
         'ten_san_pham',
+        'gia_nhap',
+        'gia_ban',
         'hinh_anh',
     ];
 }

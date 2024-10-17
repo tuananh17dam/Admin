@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('san_phams', function (Blueprint $table) {
             $table->id();
             $table->string('ten_san_pham');
+            
+            $table->float('gia_nhap');
+            $table->float('gia_ban');
+            $table->integer('so_luong');
             $table->string('hinh_anh')->nullable();
             $table->timestamps();
         });

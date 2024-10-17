@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('title') Danh sách khách hàng @endsection
 
 @section('css')
@@ -13,6 +14,7 @@
         .table thead th {
             background-color: #f8f9fa;
             color: #495057;
+            text-align: center; /* Căn giữa tiêu đề */
         }
 
         .table tbody tr:hover {
@@ -26,6 +28,29 @@
 
         .action-buttons .btn {
             margin-right: 5px;
+        }
+
+        /* Căn giữa cột mã khách hàng và các cột khác */
+        td, th {
+            text-align: center; /* Căn giữa nội dung cột */
+        }
+
+        /* Giảm kích thước cột mã khách hàng */
+        th:nth-child(2), td:nth-child(2) {
+            width: 60px; /* Giảm chiều rộng cột mã khách hàng */
+        }
+
+        /* Ẩn phần địa chỉ không cần thiết */
+        .address-cell {
+            overflow: hidden; /* Ẩn phần địa chỉ */
+            white-space: nowrap; /* Không xuống dòng */
+            text-overflow: ellipsis; /* Hiển thị dấu '...' khi vượt quá */
+            max-width: 150px; /* Giới hạn chiều rộng tối đa của địa chỉ */
+        }
+
+        /* Ẩn thanh cuộn ngang cho bảng */
+        .table-responsive {
+            overflow-x: hidden; /* Ẩn thanh cuộn ngang */
         }
     </style>
 @endsection
@@ -61,17 +86,17 @@
                         <table class="table align-middle datatable dt-responsive table-check nowrap" style="width: 100%;">
                             <thead>
                                 <tr class="bg-transparent">
-                                    <th style="width: 30px;">
+                                    <th style="width: 5px;">
                                         <div class="form-check font-size-16">
                                             <input type="checkbox" name="check" class="form-check-input" id="checkAll" onclick="toggle(this)">
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th style="width: 120px;">Mã khách hàng</th>
-                                    <th>Tên khách hàng</th>
-                                    <th style="width: 150px;">Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                    <th style="width: 90px;">Hành động</th>
+                                    < <th style="width: 5px; text-align: center;">ID</th> <!-- Giảm chiều rộng cột -->
+                                    <th style="text-align: center; width: 150px;">Tên khách hàng</th>
+                                    <th style="width: 150px; text-align: center;">Số điện thoại</th>
+                                    <th style="text-align: center;">Địa chỉ</th>
+                                    <th style="width: 90px; text-align: center;">Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,15 +105,16 @@
                                         <td>
                                             <div class="form-check font-size-16">
                                                 <input type="checkbox" class="form-check-input" id="check_{{ $khachHang->id }}" name="ids[]" value="{{ $khachHang->id }}">
-                                                <label class="form-check-label" for="check_{{ $khachHang->id }}"></label>
+                                                <label  class="form-check-label" for="check_{{ $khachHang->id }}" style="text-align: center;"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $khachHang->id }}</td>
-                                        <td>{{ $khachHang->ten }}</td>
-                                        <td>{{ $khachHang->so_dien_thoai }}</td>
-                                        <td>{{ $khachHang->dia_chi }}</td>
+                                        <td  style="width: 5px;" >{{ $khachHang->id }}</td>
+                                        <td style="text-align: center";>{{ $khachHang->ten }}</td>
+                                        <td style="text-align: center;">{{ $khachHang->so_dien_thoai }}</td>
+                                        <td class="address-cell">{{ $khachHang->dia_chi }}</td> <!-- Thêm class để ẩn phần địa chỉ -->
                                         <td class="action-buttons">
-                                            <a href="{{ route('khach_hang.edit', $khachHang->id) }}" class="btn btn-primary btn-sm">Sửa</a>
+                                            <a href="{{ route('khach-hang.show', $khachHang->id) }}" class="btn btn-info btn-sm">Xem Chi Tiết</a>
+                                            <a href="{{ route('khach-hang.edit', $khachHang->id) }}" class="btn btn-primary btn-sm">Sửa</a>
                                             <form action="{{ route('khach-hang.destroy', $khachHang->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

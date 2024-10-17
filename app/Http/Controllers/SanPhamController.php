@@ -48,10 +48,13 @@ class SanPhamController extends Controller
         // Tạo sản phẩm mới
         $sanPham = new SanPham();
         $sanPham->ten_san_pham = $request->ten_san_pham;
+        $sanPham->gia_nhap = $request->gia_nhap;
+        $sanPham->gia_ban = $request->gia_ban;
+        $sanPham->so_luong= $request->so_luong;
 
         // Xử lý hình ảnh
         if ($request->hasFile('hinh_anh')) {
-            $path = $request->file('hinh_anh')->store('images/sanpham', 'public');
+            $path = $request->file('hinh_anh')->store('store/images/sanpham', 'public');
             $sanPham->hinh_anh = $path;
         }
 
@@ -94,15 +97,22 @@ class SanPhamController extends Controller
         // Tìm sản phẩm theo ID
         $sanPham = SanPham::findOrFail($id);
         $sanPham->ten_san_pham = $request->ten_san_pham;
-
+        $sanPham->gia_nhap = $request->gia_nhap;
+        $sanPham->gia_ban = $request->gia_ban;
         // Xử lý hình ảnh
         if ($request->hasFile('hinh_anh')) {
             $path = $request->file('hinh_anh')->store('images/sanpham', 'public');
-            $sanPham->hinh_anh = $path;
+            //dd($path);
+            $sanPham->hinh_anh = "storage/".$path;
         }
 
         $sanPham->save();
 
         return redirect()->route('san-pham.index')->with('success', 'Cập nhật sản phẩm thành công!');
+    }
+    public function show($id)
+    {
+        $sanPham = SanPham::findOrFail($id); // Lấy sản phẩm theo ID hoặc trả về lỗi 404
+        return view('remake.san-pham.chi-tiet-san-pham', compact('sanPham'));
     }
 }

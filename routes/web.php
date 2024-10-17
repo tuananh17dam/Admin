@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\SanPhamController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KhachHangController;
+use App\Models\DonHang;
+use App\Models\KhachHang;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +38,13 @@ Route::put('san-pham/{id}', [SanPhamController::class, 'update'])->name('san-pha
 
 Route::get('them-san-pham', [SanPhamController::class, 'create'])->name('them-san-pham');
 
-// Route để xử lý lưu sản phẩm mới (POST)
-
 
 Route::post('them-san-pham', [SanPhamController::class, 'store'])->name('them-san-pham.post');
-
-
-
 Route::get('danh-sach-khach-hang', [KhachHangController::class, 'index'])->name('khach-hang.index');
+Route::get('/san-pham/{id}', [SanPhamController::class, 'show'])->name('san-pham.show'); // Chi tiết sản phẩm
+
+
+Route::get('/khach-hang/{id}', [KhachHangController::class, 'show'])->name('khach-hang.show'); // Chi tiết khách hàng
 
 Route::get('them-khach-hang', [KhachHangController::class, 'create'])->name('them-khach-hang');
 
@@ -59,7 +61,7 @@ Route::resource('san-pham', SanPhamController::class);
 
 
 // Route để hiển thị form sửa khách hàng
-Route::get('sua-khach-hang/{id}', [KhachHangController::class, 'edit'])->name('khach_hang.edit');
+Route::get('sua-khach-hang/{id}', [KhachHangController::class, 'edit'])->name('khach-hang.edit');
 
 // Route để xử lý cập nhật khách hàng
 Route::post('sua-khach-hang/{id}', [KhachHangController::class, 'update'])->name('khach_hang.update');
@@ -67,7 +69,7 @@ Route::post('sua-khach-hang/{id}', [KhachHangController::class, 'update'])->name
 
 Route::delete('san-pham/mass-destroy', [SanPhamController::class, 'massDestroy'])->name('san-pham.massDestroy');
 
-
+Route::get('/danh-sach-don-hang', [DonHangController::class,'index'])->name('don-hang.index');
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 //Language Translation
@@ -76,3 +78,10 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 
 
 //Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::resource('don-hang', DonHangController::class);
+
+Route::get('them-don-hang', [DonHangController::class, 'create'])->name('them-don-hang');
+
+
+Route::post('them-don-hang', [DonHangController::class, 'store'])->name('them-don-hang.post');
+Route::delete('don-hang/{id}', [DonHangController::class, 'destroy'])->name('don-hang.destroy');

@@ -81,4 +81,9 @@ class KhachHangController extends Controller
         // Chuyển hướng về trang danh sách khách hàng với thông báo thành công
         return redirect()->route('khach-hang.index')->with('success', 'Khách hàng đã được cập nhật.');
     }
+    public function show($id)
+    {
+        $khachHang = KhachHang::findOrFail($id);
+        return view('remake.khach-hang.chi-tiet-khach-hang', compact('khachHang'));
+    }
 }

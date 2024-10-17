@@ -42,6 +42,18 @@
                             <input type="text" class="form-control" id="ten_san_pham" name="ten_san_pham" required>
                         </div>
                         <div class="mb-3">
+                            <label for="gia_nhap" class="form-label">Giá nhập</label>
+                            <input type="text" class="form-control" id="gia_nhap" name="gia_nhap" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gia_ban" class="form-label">Giá bán</label>
+                            <input type="text" class="form-control" id="gia_ban" name="gia_ban" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="so_luong" class="form-label">so_luong</label>
+                            <input type="text" class="form-control" id="so_luong" name="so_luong" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="hinh_anh" class="form-label">Hình ảnh</label>
                             <input type="file" class="form-control" id="hinh_anh" name="hinh_anh" accept="image/*" required>
                         </div>
