@@ -11,36 +11,47 @@ Chi tiết sản phẩm
     .product-detail-container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 100vh;
-        padding: 20px;
+        align-items: flex-start;
+        /* Để đảm bảo ảnh và thông tin không chèn lên nhau */
+        min-height: 100vh;
+        padding: 10px;
         background-color: #f8f9fa;
     }
 
     .product-detail-card {
-        width: 80%; /* Tăng kích thước form để chiếm nhiều chiều ngang hơn */
+        width: 70%;
+        /* Tăng kích thước form để chiếm nhiều chiều ngang hơn */
         max-width: 1200px;
-        padding: 20px; /* Giảm padding để giảm chiều cao */
+        padding: 10px;
         border-radius: 15px;
         background-color: #ffffff;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
     .product-detail img {
-        max-width: 60%; /* Giảm kích thước ảnh */
+        max-width: 50%;
+        /* Giảm kích thước ảnh nếu quá to */
+        max-height: 400px;
+        /* Giới hạn chiều cao của ảnh */
         height: auto;
         border-radius: 10px;
-        margin: 20px auto;
-        display: block;
+        /* margin: px auto; */
+        display: block; /* Đảm bảo hình ảnh là một block để margin hoạt động */
+        margin-bottom: 20px; /* Tăng khoảng cách giữa hình ảnh và chữ bên dưới */
+
     }
 
     .product-info {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Sắp xếp thông tin thành 2 cột */
-        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+        /* Sắp xếp thông tin thành 2 cột */
+        column-gap: 60px;
+        /* Khoảng cách giữa các cột */
+        row-gap: 15px;
+        /* Khoảng cách giữa các hàng */
         font-size: 18px;
         color: #495057;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
     }
 
     .product-info h5 {
@@ -67,32 +78,46 @@ Chi tiết sản phẩm
         background-color: #5a6268;
     }
 
-    /* Căn chỉnh nút về dưới nhưng vẫn trong tầm nhìn */
+    /* Đảm bảo layout ảnh và thông tin không chèn lên nhau */
     .card-body {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        height: 100%;
     }
 
+    /* Điều chỉnh thông tin và hình ảnh để phù hợp với kích thước màn hình */
+    @media (max-width: 768px) {
+        .product-detail img {
+            max-width: 80%;
+            display: block; /* Đảm bảo hình ảnh là một block để margin hoạt động */
+            margin-bottom: 20px; /* Tăng khoảng cách giữa hình ảnh và chữ bên dưới */
+            /* Ảnh nhỏ hơn trên màn hình nhỏ */
+        }
+
+        .product-info {
+            grid-template-columns: 1fr;
+            /* Thay đổi thành 1 cột trên màn hình nhỏ */
+        }
+    }
 </style>
 @endsection
 
 @section('content')
 @component('components.breadcrumb')
-    @slot('li_1') Sản phẩm @endslot
-    @slot('title') Chi tiết sản phẩm @endslot
+@slot('li_1') Sản phẩm @endslot
+@slot('title') Chi tiết sản phẩm @endslot
 @endcomponent
 
 <div class="product-detail-container">
     <div class="card product-detail-card">
         <div class="card-body product-detail text-center">
-            {{-- <img src="asset{{ ($sanPham->hinh_anh) }}"
-            $path = {{$sanPham->hinh_anh}};
-             dd($path);
-            
-                 alt="{{ $sanPham->ten_san_pham }}"> --}}
+            {{-- Hiển thị hình ảnh sản phẩm --}}
+            @if ($sanPham->hinh_anh)
+            <img src="{{ asset($sanPham->hinh_anh) }}" alt="{{ $sanPham->ten_san_pham }}">
+            @else
+            <p>Không có hình ảnh</p>
+            @endif
 
             <div class="product-info">
                 <div>

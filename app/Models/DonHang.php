@@ -9,33 +9,42 @@ class DonHang extends Model
 {
     use HasFactory;
 
-    // Khai báo tên bảng (tùy chọn, nếu tên bảng không theo quy tắc mặc định của Laravel)
+    // Đặt tên bảng nếu khác với quy tắc mặc định
     protected $table = 'don_hangs';
 
-    // Danh sách các cột có thể fillable (cho phép nhập liệu hàng loạt)
+    // Các trường có thể gán giá trị đại chúng (mass assignable)
     protected $fillable = [
         'khach_hang_id',
-        'san_pham_id',
-        'so_luong',
-        'vocher',
-        'thanh_tien',
+        'tin_nhan',
+        'voucher',
+        'sale',
+        'diem_thuong',
         'don_vi_van_chuyen',
+        'phi_van_chuyen',
+        'voucher_van_chuyen',
+        'tong_thanh_toan',
+        'phuong_thuc_thanh_toan',
         'tinh_trang',
     ];
 
-    /**
-     * Quan hệ với bảng khách hàng
-     */
+    // Quan hệ với model KhachHang
     public function khachHang()
     {
         return $this->belongsTo(KhachHang::class, 'khach_hang_id');
     }
 
-    /**
-     * Quan hệ với bảng sản phẩm
-     */
-    public function sanPham()
+    public function donHangSanPhams()
     {
-        return $this->belongsTo(SanPham::class, 'san_pham_id');
+        return $this->hasMany(DonHangSanPham::class, 'don_hang_id');
+    }
+
+    // Nếu cần quan hệ với các sản phẩm, có thể thêm quan hệ này
+
+
+    // Phương thức để tính tổng thanh toán
+    public function calculateTotal()
+    {
+        $this->tong_thanh_toan = $this->thanh_tien - $this->voucher + $this->phi_van_chuyen - $this->voucher_van_chuyen;
+        $this->save(); // Lưu thay đổi vào cơ sở dữ liệu
     }
 }

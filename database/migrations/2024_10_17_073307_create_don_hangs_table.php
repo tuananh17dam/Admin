@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use function Laravel\Prompts\table;
-
 return new class extends Migration
 {
     /**
@@ -15,27 +13,24 @@ return new class extends Migration
     {
         Schema::create('don_hangs', function (Blueprint $table) {
             $table->id();
-
-            // Khóa ngoại đến bảng khách hàng
             $table->foreignId('khach_hang_id')->constrained('khach_hangs')->onDelete('cascade');
-
-            // Khóa ngoại đến bảng sản phẩm
-            $table->foreignId('san_pham_id')->constrained('san_phams')->onDelete('cascade');
-
-            // Số lượng sản phẩm trong đơn hàng
-            $table->integer('so_luong');
-
-            $table->float('vocher');
-
-            $table->float('thanh_tien');
-
-            // Đơn vị vận chuyển
-            $table->string('don_vi_van_chuyen');
-
-            // Tình trạng đơn hàng (0: chưa giao, 1: đã giao, 2: hủy đơn)
-            $table->enum('tinh_trang', ['chua_giao', 'da_giao', 'huy_don'])->default('chua_giao');
-
-            // Thời gian tạo và cập nhật
+            $table->string('tin_nhan'); // ghi_chu
+            $table->float('voucher')->default(0); // Voucher giảm giá đơn hàng
+            $table->float('sale')->default(0);
+            $table->float('diem_thuong');
+            $table->string('don_vi_van_chuyen'); // Đơn vị vận chuyển
+            $table->float('phi_van_chuyen')->default(0); // Phí vận chuyển
+            $table->float('voucher_van_chuyen')->default(0); // Voucher vận chuyển
+            $table->float('tong_thanh_toan')->default(0); // Tổng thanh toán
+            $table->enum('phuong_thuc_thanh_toan', [
+                'Thanh toán khi nhận hàng',
+                'Zalopay',
+                'Ví điện tử MoMo',
+                'Thẻ tín dụng/ghi nợ nội địa',
+                'thẻ ATM nội địa',
+                'VNPAY'
+            ])->default('Thanh toán khi nhận hàng');
+            $table->enum('tinh_trang', ['chua_giao', 'da_giao', 'huy_don'])->default('chua_giao'); // Tình trạng đơn hàng
             $table->timestamps();
         });
     }

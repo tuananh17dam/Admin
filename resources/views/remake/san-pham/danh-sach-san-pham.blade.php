@@ -71,7 +71,7 @@ Danh mục sản phẩm
                                         <label class="form-check-label" for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th style="width: 5%; text-align: center;">Mã sản phẩm</th>
+                                <th style="width: 5%; text-align: center;">ID</th>
                                 <th style="width: 30%; text-align: center;">Tên sản phẩm</th>
                                 {{-- <th style="width: 30%; text-align: center;">Giá nhập</th> --}}
                                 <th style="width: 30%; text-align: center;">Giá bán</th>
@@ -94,8 +94,7 @@ Danh mục sản phẩm
                                 {{-- <td>{{ $sanPham->gia_nhap }}</td> --}}
                                 <td>{{ $sanPham->gia_ban }}</td>
                                 <td>
-                                    <img src="{{ $sanPham->hinh_anh }}" 
-                                         alt="{{ $sanPham->ten_san_pham }}">
+                                    <img src="{{ asset($sanPham->hinh_anh) }}" alt="{{ $sanPham->ten_san_pham }}">
                                 </td>
                                 <td class="action-buttons">
                                     <a href="{{ route('san-pham.show', $sanPham->id) }}" class="btn btn-info btn-sm">Xem chi tiết</a>

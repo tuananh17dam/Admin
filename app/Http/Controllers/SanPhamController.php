@@ -44,24 +44,25 @@ class SanPhamController extends Controller
             'ten_san_pham' => 'required|string|max:255',
             'hinh_anh' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Kích thước tối đa 2MB
         ]);
-
+    
         // Tạo sản phẩm mới
         $sanPham = new SanPham();
         $sanPham->ten_san_pham = $request->ten_san_pham;
         $sanPham->gia_nhap = $request->gia_nhap;
         $sanPham->gia_ban = $request->gia_ban;
-        $sanPham->so_luong= $request->so_luong;
-
+        $sanPham->so_luong = $request->so_luong;
+    
         // Xử lý hình ảnh
         if ($request->hasFile('hinh_anh')) {
-            $path = $request->file('hinh_anh')->store('store/images/sanpham', 'public');
-            $sanPham->hinh_anh = $path;
+            $path = $request->file('hinh_anh')->store('images/sanpham', 'public'); // Lưu vào storage/app/public/images/sanpham
+            $sanPham->hinh_anh = 'storage/' . $path; // Đường dẫn công khai sẽ bắt đầu bằng storage/
         }
-
+    
         $sanPham->save();
-
+    
         return redirect()->route('san-pham.index')->with('success', 'Thêm sản phẩm thành công!');
     }
+    
 
     /**
      * Hiển thị form thêm sản phẩm.
@@ -93,23 +94,24 @@ class SanPhamController extends Controller
             'ten_san_pham' => 'required|string|max:255',
             'hinh_anh' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Kích thước tối đa 2MB
         ]);
-
+    
         // Tìm sản phẩm theo ID
         $sanPham = SanPham::findOrFail($id);
         $sanPham->ten_san_pham = $request->ten_san_pham;
         $sanPham->gia_nhap = $request->gia_nhap;
         $sanPham->gia_ban = $request->gia_ban;
+    
         // Xử lý hình ảnh
         if ($request->hasFile('hinh_anh')) {
-            $path = $request->file('hinh_anh')->store('images/sanpham', 'public');
-            //dd($path);
-            $sanPham->hinh_anh = "storage/".$path;
+            $path = $request->file('hinh_anh')->store('images/sanpham', 'public'); // Lưu vào storage/app/public/images/sanpham
+            $sanPham->hinh_anh = 'storage/' . $path; // Đường dẫn công khai sẽ bắt đầu bằng storage/
         }
-
+    
         $sanPham->save();
-
+    
         return redirect()->route('san-pham.index')->with('success', 'Cập nhật sản phẩm thành công!');
     }
+    
     public function show($id)
     {
         $sanPham = SanPham::findOrFail($id); // Lấy sản phẩm theo ID hoặc trả về lỗi 404

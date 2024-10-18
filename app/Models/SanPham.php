@@ -17,4 +17,8 @@ class SanPham extends Model
         'gia_ban',
         'hinh_anh',
     ];
+    public function donHangSanPhams()
+    {
+        return $this->hasMany(DonHangSanPham::class, 'san_pham_id');
+    }
 }
