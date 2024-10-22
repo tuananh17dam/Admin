@@ -21,4 +21,5 @@ class SanPham extends Model
     {
         return $this->hasMany(DonHangSanPham::class, 'san_pham_id');
     }
+   
 }

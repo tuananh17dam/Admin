@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KhachHangController;
 use App\Models\DonHang;
 use App\Models\KhachHang;
+use PhpParser\Node\Stmt\Return_;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,8 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::resource('don-hang', DonHangController::class);
 
 Route::get('them-don-hang', [DonHangController::class, 'create'])->name('them-don-hang');
+Route::post('them-don-hang', [DonHangController::class, 'store'])->name('don-hang.store');
 
-
-Route::post('them-don-hang', [DonHangController::class, 'store'])->name('them-don-hang.post');
+//Route::post('them-don-hang', [DonHangController::class, 'store'])->name('them-don-hang.post');
 Route::delete('don-hang/{id}', [DonHangController::class, 'destroy'])->name('don-hang.destroy');
+

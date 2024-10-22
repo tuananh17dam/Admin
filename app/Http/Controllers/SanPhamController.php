@@ -49,9 +49,7 @@ class SanPhamController extends Controller
         $sanPham = new SanPham();
         $sanPham->ten_san_pham = $request->ten_san_pham;
         $sanPham->gia_nhap = $request->gia_nhap;
-        $sanPham->gia_ban = $request->gia_ban;
-        $sanPham->so_luong = $request->so_luong;
-    
+        $sanPham->gia_ban = $request->gia_ban;    
         // Xử lý hình ảnh
         if ($request->hasFile('hinh_anh')) {
             $path = $request->file('hinh_anh')->store('images/sanpham', 'public'); // Lưu vào storage/app/public/images/sanpham

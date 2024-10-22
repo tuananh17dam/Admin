@@ -51,36 +51,6 @@ class HomeController extends Controller
         return view('index');
     }
     
-    public function DanhSachDonHang() {
-        return view('remake.don-hang.danh-sach-don-hang');
-    }
-    public function ChiTietDonHang() {
-        return view('remake.don-hang.chi-tiet-don-hang');
-    }
-    // public function KhachHang() {
-    //     return view('remake.khach-hang.');
-    // }
-    public function ChiTietSanPham() {
-        return view('remake.san-pham.chi-tiet-san-pham');
-    }
-    public function DanhSacSanPham() {
-        return view('remake.san-pham.danh-sach-san-pham');
-    }
-    // public function ChiTietHoaDon() {
-    //     return view('remake.hoa-don.chi-tiet-hoa-don');
-    // }
-    // public function DanhSachHoaDon() {
-    //     return view('remake.hoa-don.danh-sach-hoa-don');
-    // }
-    // public function ChiTietHoaDon() {
-    //     return view('remake.hoa-don.chi-tiet-hoa-don');
-    // }
-    // public function DanhSachHoaDon() {
-    //     return view('remake.hoa-don.danh-sach-hoa-don');
-    // }
-    // public function ChiTietHoaDon() {
-    //     return view('remake.hoa-don.chi-tiet-hoa-don');
-    // }
 
     public function lang($locale)
     {

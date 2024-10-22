@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('don_hangs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('khach_hang_id')->constrained('khach_hangs')->onDelete('cascade');
-            $table->string('tin_nhan'); // ghi_chu
+            $table->string('tin_nhan')->nullable(); // cho phép giá trị null
             $table->float('voucher')->default(0); // Voucher giảm giá đơn hàng
             $table->float('sale')->default(0);
             $table->float('diem_thuong');
@@ -27,7 +27,7 @@ return new class extends Migration
                 'Zalopay',
                 'Ví điện tử MoMo',
                 'Thẻ tín dụng/ghi nợ nội địa',
-                'thẻ ATM nội địa',
+                'Thẻ ATM nội địa',
                 'VNPAY'
             ])->default('Thanh toán khi nhận hàng');
             $table->enum('tinh_trang', ['chua_giao', 'da_giao', 'huy_don'])->default('chua_giao'); // Tình trạng đơn hàng

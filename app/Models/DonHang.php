@@ -37,6 +37,11 @@ class DonHang extends Model
     {
         return $this->hasMany(DonHangSanPham::class, 'don_hang_id');
     }
+    public function sanPhams()
+    {
+        return $this->belongsToMany(SanPham::class, 'don_hang_san_pham')
+                    ->withPivot('so_luong'); // Nếu cần lấy cột số lượng từ bảng trung gian
+    }
 
     // Nếu cần quan hệ với các sản phẩm, có thể thêm quan hệ này
 
