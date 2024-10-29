@@ -22,7 +22,7 @@ class DonHangFactory extends Factory
             'phi_van_chuyen' => $this->faker->randomFloat(2, 0, 50), // Phí vận chuyển ngẫu nhiên từ 0 đến 50
             'voucher_van_chuyen' => $this->faker->randomFloat(2, 0, 20), // Voucher vận chuyển ngẫu nhiên từ 0 đến 20
             'tong_thanh_toan' => function (array $attributes) {
-                return $attributes['voucher'] + $attributes['phi_van_chuyen'] - $attributes['voucher_van_chuyen'];
+                return $attributes['voucher'] + $attributes['phi_van_chuyen'] - $attributes['voucher_van_chuyen']- $attributes['sale']- $attributes['diem_thuong'];
             },
             'phuong_thuc_thanh_toan' => $this->faker->randomElement([
                 'Thanh toán khi nhận hàng',
@@ -32,7 +32,7 @@ class DonHangFactory extends Factory
                 'Thẻ ATM nội địa',
                 'VNPAY',
             ]),
-            'tinh_trang' => $this->faker->randomElement(['chua_giao', 'da_giao', 'huy_don']), // Tình trạng ngẫu nhiên
+            'tinh_trang' => $this->faker->randomElement(['Chưa giao', 'Đã giao', 'Hủy đơn']), // Tình trạng ngẫu nhiên
         ];
     }
 }

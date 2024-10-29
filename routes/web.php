@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KhachHangController;
 use App\Models\DonHang;
 use App\Models\KhachHang;
+use App\Models\TaiKhoanBanHang;
+use App\Http\Controllers\KhoHangController;
+use App\Http\Controllers\TaiKhoanBanHangController;
 use PhpParser\Node\Stmt\Return_;
 
 /*
@@ -22,7 +25,8 @@ use PhpParser\Node\Stmt\Return_;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+Route::get('/',  [DonHangController::class,'index'])->name('don-hang.index');
+Route::get('/danh-sach-don-hang',  [DonHangController::class,'index'])->name('don-hang.index');
 
 //Update User Details
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
@@ -42,14 +46,14 @@ Route::get('them-san-pham', [SanPhamController::class, 'create'])->name('them-sa
 
 Route::post('them-san-pham', [SanPhamController::class, 'store'])->name('them-san-pham.post');
 Route::get('danh-sach-khach-hang', [KhachHangController::class, 'index'])->name('khach-hang.index');
-Route::get('/san-pham/{id}', [SanPhamController::class, 'show'])->name('san-pham.show'); // Chi tiết sản phẩm
+Route::get('/san-pham/{id}', [SanPhamController::class, 'show'])->name('san-pham.show'); // Chi ti?t s?n ph?m
 
 
-Route::get('/khach-hang/{id}', [KhachHangController::class, 'show'])->name('khach-hang.show'); // Chi tiết khách hàng
+Route::get('/khach-hang/{id}', [KhachHangController::class, 'show'])->name('khach-hang.show'); // Chi ti?t kh�ch h�ng
 
 Route::get('them-khach-hang', [KhachHangController::class, 'create'])->name('them-khach-hang');
 
-// Route để xử lý lưu khách hàng mới (POST)
+// Route ?? x? l� l?u kh�ch h�ng m?i (POST)
 Route::post('them-khach-hang', [KhachHangController::class, 'store'])->name('them-khach-hang.post');
 
 
@@ -61,29 +65,46 @@ Route::resource('san-pham', SanPhamController::class);
 
 
 
-// Route để hiển thị form sửa khách hàng
+// Route ?? hi?n th? form s?a kh�ch h�ng
 Route::get('sua-khach-hang/{id}', [KhachHangController::class, 'edit'])->name('khach-hang.edit');
 
-// Route để xử lý cập nhật khách hàng
+// Route ?? x? l� c?p nh?t kh�ch h�ng
 Route::post('sua-khach-hang/{id}', [KhachHangController::class, 'update'])->name('khach_hang.update');
 
 
-Route::delete('san-pham/mass-destroy', [SanPhamController::class, 'massDestroy'])->name('san-pham.massDestroy');
+// Route::delete('san-pham/mass-destroy', [SanPhamController::class, 'massDestroy'])->name('san-pham.massDestroy');
 
 Route::get('/danh-sach-don-hang', [DonHangController::class,'index'])->name('don-hang.index');
 // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
-//Language Translation
-Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+// //Language Translation
+// Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
 
 
-//Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+// //Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::resource('don-hang', DonHangController::class);
 
-Route::get('them-don-hang', [DonHangController::class, 'create'])->name('them-don-hang');
-Route::post('them-don-hang', [DonHangController::class, 'store'])->name('don-hang.store');
+ Route::get('them-don-hang', [DonHangController::class, 'create'])->name('them-don-hang');
+// Route::post('them-don-hang', [DonHangController::class, 'store'])->name('don-hang.store');
 
-//Route::post('them-don-hang', [DonHangController::class, 'store'])->name('them-don-hang.post');
+Route::post('them-don-hang', [DonHangController::class, 'store'])->name('them-don-hang.post');
 Route::delete('don-hang/{id}', [DonHangController::class, 'destroy'])->name('don-hang.destroy');
 
+
+
+// Route::resource('kho-hang', KhoHangController::class);
+Route::resource('kho-hang', KhoHangController::class);
+Route::get('/kho-hang/het-hang', [KhoHangController::class, 'outOfStock'])->name('kho-hang.out-of-stock');
+
+Route::resource('tai-khoan-ban-hang', TaiKhoanBanHangController::class);
+
+Route::post('them-tai-khoan-ban-hang', [TaiKhoanBanHangController::class, 'store'])->name('them-tai-khoan-ban-hang.post');
+Route::get('them-tai-khoan-ban-hang', [TaiKhoanBanHangController::class, 'create'])->name('them-tai-khoan-ban-hang');
+
+// Route ?? x? l� l?u kh�ch h�ng m?i (POST)
+Route::post('them-khach-hang', [KhachHangController::class, 'store'])->name('them-khach-hang.post');
+
+Route::get('/index', function () {
+    return view('index');
+})->name('home.index');

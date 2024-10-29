@@ -19,14 +19,14 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="index" class="d-block auth-logo">
-                                            <img src="build/images/logo-sm.svg" alt="" height="28"> <span
-                                                class="logo-txt">Minia</span>
+                                            <img src="build/images/logo-01.png" alt="" height="28"> <span
+                                                class="logo-txt">Tuan Anh</span>
                                         </a>
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
                                             <h5 class="mb-0">Welcome Back !</h5>
-                                            <p class="text-muted mt-2">Sign in to continue to Minia.</p>
+                                            <p class="text-muted mt-2">Sign in to continue to Tuan Anh.</p>
                                         </div>
                                         <form method="POST" action="{{ route('login') }}" class="custom-form mt-4 pt-2">
                                             @csrf
@@ -51,8 +51,8 @@
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div class="">
-                                                            <a href="@if (Route::has('password.request')) {{ route('password.request') }} @endif" class="text-muted">Forgot
-                                                                password?</a>
+                                                            {{-- <a href="@if (Route::has('password.request')) {{ route('password.request') }} @endif" class="text-muted">Forgot
+                                                                password?</a> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -72,24 +72,26 @@
                                                             class="mdi mdi-eye-outline"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
-                                                <div class="col">
+                                            <br>
+                                            {{-- <div class="row mb-4">
+                                                {{-- <div class="col">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="remember-check">
+                                                        {{-- <input class="form-check-input" type="checkbox" id="remember-check">
                                                         <label class="form-check-label" for="remember-check">
                                                             Remember me
-                                                        </label>
+                                                        </label> 
                                                     </div>
-                                                </div>
+                                                </div> 
+                                               
 
-                                            </div>
+                                            </div>   --}}
                                             <div class="mb-3">
                                                 <button class="btn btn-primary w-100 waves-effect waves-light"
                                                     type="submit">Log In</button>
                                             </div>
                                         </form>
 
-                                        <div class="mt-4 pt-2 text-center">
+                                        {{-- <div class="mt-4 pt-2 text-center">
                                             <div class="signin-other-title">
                                                 <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign in with -</h5>
                                             </div>
@@ -114,7 +116,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="mt-5 text-center">
                                             <p class="text-muted mb-0">Don't have an account ? <a
@@ -122,12 +124,12 @@
                                                     Signup now </a> </p>
                                         </div>
                                     </div>
-                                    <div class="mt-4 mt-md-5 text-center">
+                                    {{-- <div class="mt-4 mt-md-5 text-center">
                                         <script>
                                             document.write(new Date().getFullYear())
                                         </script> © Minia . Crafted with <i class="mdi mdi-heart text-danger"></i> by
                                         Themesbrand</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -150,7 +152,7 @@
                                 <li></li>
                             </ul>
                             <!-- end bubble effect -->
-                            <div class="row justify-content-center align-items-center">
+                            {{-- <div class="row justify-content-center align-items-center">
                                 <div class="col-xl-7">
                                     <div class="p-0 p-sm-4 px-xl-0">
                                         <div id="reviewcarouselIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -250,7 +252,7 @@
                                         <!-- end review carousel -->
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- end col -->

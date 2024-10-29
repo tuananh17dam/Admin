@@ -132,7 +132,7 @@ return [
     "Utility" => "Utility",
     "Placeholders"=>"Placeholders",
     "Toast"=>"Toasts",
-
+    "Quản lý hóa đơn"=>"Bill Management",
 
 ];
 ?>

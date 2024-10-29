@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="build/images/logo-sm.svg" alt="" height="24">
+                        <img src="build/images/logo-01.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="build/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="build/images/logo-01.png" alt="" height="24"> <span class="logo-txt">Minia</span>
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="build/images/logo-sm.svg" alt="" height="24">
+                        <img src="build/images/logo-01.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="build/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="build/images/logo-01.png" alt="" height="24"> <span class="logo-txt">Minia</span>
                     </span>
                 </a>
             </div>
@@ -28,10 +28,10 @@
 
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
-                <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                {{-- <div class="position-relative">
+                    {{-- <input type="text" class="form-control" placeholder="Tìm kiếm..."> 
                     <button class="btn btn-primary" type="button"><i class="bx bx-search-alt align-middle"></i></button>
-                </div>
+                </div> --}}
             </form>
         </div>
 
@@ -48,7 +48,7 @@
                     <form class="p-3">
                         <div class="form-group m-0">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm ..."
+                                {{-- <input type="text" class="form-control" placeholder="Tìm kiếm ..." --}}
                                     aria-label="Search Result">
 
                                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>

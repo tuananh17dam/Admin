@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('khach_hang_id')->constrained('khach_hangs')->onDelete('cascade');
             $table->string('tin_nhan')->nullable(); // cho phép giá trị null
-            $table->float('voucher')->default(0); // Voucher giảm giá đơn hàng
-            $table->float('sale')->default(0);
-            $table->float('diem_thuong');
+            $table->integer('voucher')->default(0); // Voucher giảm giá đơn hàng
+            $table->integer('sale')->default(0);
+            $table->integer('diem_thuong');
             $table->string('don_vi_van_chuyen'); // Đơn vị vận chuyển
-            $table->float('phi_van_chuyen')->default(0); // Phí vận chuyển
-            $table->float('voucher_van_chuyen')->default(0); // Voucher vận chuyển
-            $table->float('tong_thanh_toan')->default(0); // Tổng thanh toán
+            $table->integer('phi_van_chuyen')->default(0); // Phí vận chuyển
+            $table->integer('voucher_van_chuyen')->default(0); // Voucher vận chuyển
+            $table->integer('tong_thanh_toan')->default(0); // Tổng thanh toán
             $table->enum('phuong_thuc_thanh_toan', [
                 'Thanh toán khi nhận hàng',
                 'Zalopay',
@@ -30,7 +30,7 @@ return new class extends Migration
                 'Thẻ ATM nội địa',
                 'VNPAY'
             ])->default('Thanh toán khi nhận hàng');
-            $table->enum('tinh_trang', ['chua_giao', 'da_giao', 'huy_don'])->default('chua_giao'); // Tình trạng đơn hàng
+            $table->enum('tinh_trang', ['Chưa giao', 'Đã giao', 'Hủy đơn'])->default('Chưa giao'); // Tình trạng đơn hàng
             $table->timestamps();
         });
     }
