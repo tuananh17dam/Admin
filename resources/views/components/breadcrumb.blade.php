@@ -1,19 +1,16 @@
-<!-- start page title -->
-<div class="row">
+<div class="row mb-4">
     <div class="col-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">{{ $title }}</h4>
+        <div class="page-title-box d-flex align-items-center justify-content-between flex-column flex-md-row text-center text-md-start">
+            <h4 class="mb-2 mb-md-0 font-size-20 font-md-size-24 text-primary">{{ $title }}</h4>
 
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ $li_1 }}</a></li>
+            <div class="page-title-right mt-2 mt-md-0">
+                <ol class="breadcrumb m-0 d-flex align-items-center justify-content-center justify-content-md-end">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);" class="text-muted">{{ $li_1 }}</a></li>
                     @if(isset($title))
-                        <li class="breadcrumb-item active">{{ $title }}</li>
+                        <li class="breadcrumb-item active text-muted" aria-current="page">{{ $title }}</li>
                     @endif
                 </ol>
             </div>
-
         </div>
     </div>
 </div>
-<!-- end page title -->

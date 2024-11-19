@@ -347,7 +347,7 @@
                 <!-- card -->
                 <div class="card">
                     <!-- card body -->
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <div class="d-flex flex-wrap align-items-center mb-4">
                             <h5 class="card-title me-2">Market Overview</h5>
                             <div class="ms-auto">
@@ -479,7 +479,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- end card -->
                 </div>
                 <!-- end col -->
@@ -501,11 +501,11 @@
                                             class="fw-medium">World<i class="mdi mdi-chevron-down ms-1"></i></span>
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                                         <a class="dropdown-item" href="#">USA</a>
                                         <a class="dropdown-item" href="#">Russia</a>
                                         <a class="dropdown-item" href="#">Australia</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

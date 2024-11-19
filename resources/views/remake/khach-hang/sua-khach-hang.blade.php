@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <!-- Form sửa khách hàng -->
-                    <form action="{{ route('khach_hang.update', $khachHang->id) }}" method="POST">
+                    <form action="{{ route('khach-hang.update', $khachHang->id) }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="ten" class="form-label">Tên khách hàng</label>

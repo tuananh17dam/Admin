@@ -1,37 +1,40 @@
 @extends('layouts.master')
+
 @section('css')
 <link href="{{ URL::asset('build/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css">
 <style>
-    /* Căn giữa và mở rộng chi tiết khách hàng */
+    /* Tạo bảng chi tiết khách hàng với màu sắc tươi sáng */
     .customer-detail-container {
-       
         display: flex;
         justify-content: center;
-        align-items: center;
+        padding: 20px;
     }
 
     .customer-detail-card {
-        width: 60%; /* Tăng gấp đôi kích thước form */
+        width: 100%;
         max-width: 800px;
-        padding: 30px;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #e7f1ff; /* Nền xanh dương nhạt */
     }
 
-    .customer-info {
-        font-size: 18px;
+    .customer-info th {
+        background-color: #d0e2ff;
         color: #495057;
-        margin-bottom: 20px;
+        font-weight: bold;
+        text-align: left;
+        padding: 10px;
     }
 
-    .customer-info h5 {
-        font-weight: bold;
-        margin: 5px 0; /* Giảm khoảng cách trên và dưới */
+    .customer-info td {
+        padding: 10px;
+        text-align: left;
     }
 
     .btn-back {
         display: block;
-        margin-top: 5px;
+        margin-top: 15px;
+        text-align: center;
     }
 </style>
 @endsection
@@ -42,21 +45,30 @@
     @slot('title') Chi tiết khách hàng @endslot
 @endcomponent
 
-<div class="customer-detail-container">
+<div class="customer-detail-container" style="background-color: #99FFFF;">
     <div class="card customer-detail-card">
-        <div class="card-body text-center">
+        <div class="card-body">
             <div class="customer-info">
-                <h5>Mã khách hàng:</h5>
-                <p>{{ $khachHang->id }}</p>
-
-                <h5>Tên khách hàng:</h5>
-                <p>{{ $khachHang->ten }}</p>
-
-                <h5>Số điện thoại:</h5>
-                <p>{{ $khachHang->so_dien_thoai }}</p>
-
-                <h5>Địa chỉ:</h5>
-                <p>{{ $khachHang->dia_chi }}</p>
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Mã khách hàng</th>
+                            <td>{{ $khachHang->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tên khách hàng</th>
+                            <td>{{ $khachHang->ten }}</td>
+                        </tr>
+                        <tr>
+                            <th>Số điện thoại</th>
+                            <td>{{ $khachHang->so_dien_thoai }}</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>{{ $khachHang->dia_chi }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <a href="{{ route('khach-hang.index') }}" class="btn btn-secondary btn-back">

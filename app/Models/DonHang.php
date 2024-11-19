@@ -15,6 +15,7 @@ class DonHang extends Model
     // Các trường có thể gán giá trị đại chúng (mass assignable)
     protected $fillable = [
         'khach_hang_id',
+        'user_id',
         'tin_nhan',
         'voucher',
         'sale',
@@ -32,6 +33,10 @@ class DonHang extends Model
     {
         return $this->belongsTo(KhachHang::class, 'khach_hang_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function donHangSanPhams()
     {
@@ -40,8 +45,9 @@ class DonHang extends Model
     public function sanPhams()
     {
         return $this->belongsToMany(SanPham::class, 'don_hang_san_pham')
-                    ->withPivot('so_luong'); // Nếu cần lấy cột số lượng từ bảng trung gian
+            ->withPivot('so_luong', 'thanh_tien');
     }
+    
 
     // Nếu cần quan hệ với các sản phẩm, có thể thêm quan hệ này
 
@@ -49,7 +55,7 @@ class DonHang extends Model
     // Phương thức để tính tổng thanh toán
     public function calculateTotal()
     {
-        $this->tong_thanh_toan = $this->thanh_tien - $this->voucher + $this->phi_van_chuyen - $this->voucher_van_chuyen;
+        $this->tong_thanh_toan = $this->thanh_tien - $this->voucher - $this->sale + $this->phi_van_chuyen - $this->voucher_van_chuyen;
         $this->save(); // Lưu thay đổi vào cơ sở dữ liệu
     }
 }

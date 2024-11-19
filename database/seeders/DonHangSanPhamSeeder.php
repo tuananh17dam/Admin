@@ -9,6 +9,6 @@ class DonHangSanPhamSeeder extends Seeder
 {
     public function run()
     {
-        DonHangSanPham::factory()->count(50)->create(); // Tạo 50 bản ghi ngẫu nhiên
+        DonHangSanPham::factory()->count(5)->create(); // Tạo 5 bản ghi ngẫu nhiên
     }
 }

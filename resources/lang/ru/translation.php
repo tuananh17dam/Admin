@@ -125,7 +125,9 @@ return [
   "Extra_pages" => "Дополнительные страницы",
   "Utility" => "Полезность",
   "Placeholders"=>"заполнитель",
-  "Toast"=>"Тост"
+  "Toast"=>"Тост",
+  "Quản lý hóa đơn"=>"Bill Management",
+
 
 ];
 ?>

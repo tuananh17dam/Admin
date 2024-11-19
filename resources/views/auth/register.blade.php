@@ -20,13 +20,13 @@
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="index" class="d-block auth-logo">
                                             <img src="build/images/logo-sm.svg" alt="" height="28"> <span
-                                                class="logo-txt">Minia</span>
+                                                class="logo-txt">Tuan Anh</span>
                                         </a>
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
                                             <h5 class="mb-0">Register Account</h5>
-                                            <p class="text-muted mt-2">Get your free Minia account now.</p>
+                                            <p class="text-muted mt-2">Get your free Tuan Anh account now.</p>
                                         </div>
                                         <form method="POST" action="{{ route('register') }}"
                                             class="needs-validation mt-4 pt-2" novalidate action="index">
@@ -241,7 +241,7 @@
                                                                 <img src="build/images/users/avatar-3.jpg"
                                                                     class="avatar-md img-fluid rounded-circle" alt="...">
                                                                 <div class="flex-1 ms-3 mb-4">
-                                                                    <h5 class="font-size-18 text-white">Ilse R. Eaton</h5>
+                                                                    <h5 class="font-size-18 text-white">Tuan Anh</h5>
                                                                     <p class="mb-0 text-white-50">Manager
                                                                     </p>
                                                                 </div>

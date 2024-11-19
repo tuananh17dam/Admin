@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="build/images/logo-sm.svg" alt="" height="24">
+                        <img src="build/images/logo-01.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="build/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="build/images/logo-01.png" alt="" height="24"> <span class="logo-txt">Tuan Anh</span>
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="build/images/logo-sm.svg" alt="" height="24">
+                        <img src="build/images/logo-01.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="build/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="build/images/logo-01.png" alt="" height="24"> <span class="logo-txt">Tuan Anh</span>
                     </span>
                 </a>
             </div>

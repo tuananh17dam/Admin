@@ -20,7 +20,7 @@ class DonHangSanPhamController extends Controller
         $validatedData = $request->validate([
             'don_hang_id' => 'required|exists:don_hangs,id',
             'san_pham_id' => 'required|exists:san_phams,id',
-            'so_luong' => 'required|integer|min:1',
+            'so_luong' => 'required|integer|min:1',z
         ]);
 
         $donHangSanPham = DonHangSanPham::create($validatedData);

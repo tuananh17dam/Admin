@@ -76,7 +76,7 @@
 
                     <div class="row mb-4">
                         <div class="col-sm">
-                            <a href="them-khach-hang" class="btn btn-light waves-effect waves-light">
+                            <a href="{{ route('khach-hang.create')}}" class="btn btn-light waves-effect waves-light">
                                 <i class="bx bx-plus me-1"></i> Thêm khách hàng
                             </a>
                         </div>
@@ -86,34 +86,34 @@
                         <table class="table align-middle datatable dt-responsive table-check nowrap" style="width: 100%;">
                             <thead>
                                 <tr class="bg-transparent">
-                                    <th style="width: 5px;">
+                                    <!-- <th style="width: 5px;">
                                         <div class="form-check font-size-16">
                                             <input type="checkbox" name="check" class="form-check-input" id="checkAll" onclick="toggle(this)">
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
-                                    </th>
-                                    < <th style="width: 5px; text-align: center;">ID</th> <!-- Giảm chiều rộng cột -->
+                                    </th> -->
+                                    <th style="width: 5px; text-align: center;">ID</th> <!-- Giảm chiều rộng cột -->
                                     <th style="text-align: center; width: 150px;">Tên khách hàng</th>
-                                    <th style="width: 150px; text-align: center;">Số điện thoại</th>
-                                    <th style="text-align: center;">Địa chỉ</th>
-                                    <th style="width: 90px; text-align: center;">Hành động</th>
+                                    <th style="width: 180px; text-align: center;">Số điện thoại</th>
+                                    <th style="width: 2000px ;text-align: center;">Địa chỉ</th>
+                                    <th style="width: 80px; text-align: center;">Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($khachHangs as $khachHang)
                                     <tr>
-                                        <td>
-                                            <div class="form-check font-size-16">
-                                                <input type="checkbox" class="form-check-input" id="check_{{ $khachHang->id }}" name="ids[]" value="{{ $khachHang->id }}">
-                                                <label  class="form-check-label" for="check_{{ $khachHang->id }}" style="text-align: center;"></label>
-                                            </div>
-                                        </td>
+                                        <!-- <td> -->
+                                            <!-- <div class="form-check font-size-16"> -->
+                                                <!-- <input type="checkbox" class="form-check-input" id="check_{{ $khachHang->id }}" name="ids[]" value="{{ $khachHang->id }}"> -->
+                                                <!-- <label  class="form-check-label" for="check_{{ $khachHang->id }}" style="text-align: center;"></label> -->
+                                            <!-- </div> -->
+                                        <!-- </td> -->
                                         <td  style="width: 5px;" >{{ $khachHang->id }}</td>
                                         <td style="text-align: center";>{{ $khachHang->ten }}</td>
                                         <td style="text-align: center;">{{ $khachHang->so_dien_thoai }}</td>
                                         <td class="address-cell">{{ $khachHang->dia_chi }}</td> <!-- Thêm class để ẩn phần địa chỉ -->
                                         <td class="action-buttons">
-                                            <a href="{{ route('khach-hang.show', $khachHang->id) }}" class="btn btn-info btn-sm">Xem Chi Tiết</a>
+                                            <a href="{{ route('khach-hang.show', $khachHang->id) }}" class="btn btn-info btn-sm">Chi Tiết</a>
                                             <a href="{{ route('khach-hang.edit', $khachHang->id) }}" class="btn btn-primary btn-sm">Sửa</a>
                                             <form action="{{ route('khach-hang.destroy', $khachHang->id) }}" method="POST" style="display:inline;">
                                                 @csrf

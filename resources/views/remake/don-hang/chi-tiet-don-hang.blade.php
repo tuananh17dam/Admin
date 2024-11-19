@@ -30,9 +30,19 @@
                     </div>
                     <div class="col-md-6">
                         <h5>Thông tin đơn hàng</h5>
-                        <p><strong>Ngày đặt hàng: </strong>{{ $donHang->created_at->format('F d, Y') }}</p>
+                        <p><strong>Ngày đặt hàng: </strong>{{ $donHang->created_at->format('d-m-Y') }}</p>
                         <p><strong>Lời nhắn: </strong>{{ $donHang->tin_nhan }}</p>
                         <p><strong>Tình trạng: </strong>{{ ucfirst($donHang->tinh_trang) }}</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-6">
+                        <h5>Thông tin nhà bán hàng</h5>
+                        <p><strong>Tên: </strong>{{ $donHang->user->name }}</p>
+                        <p><strong>Số điện thoại: </strong>{{ $donHang->user->phone }}</p>
+                        <p><strong>Emai: </strong>{{ $donHang->user->email }}</p>
+                        <p><strong>Địa chỉ: </strong>{{ $donHang->user->address }}</p>
+
                     </div>
                 </div>
 

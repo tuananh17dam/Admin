@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('don_hang_id')->constrained('don_hangs')->onDelete('cascade');
             $table->foreignId('san_pham_id')->constrained('san_phams')->onDelete('cascade');
             $table->integer('so_luong'); // Số lượng sản phẩm
-            $table->float('thanh_tien'); // 
+            $table->integer('thanh_tien'); // 
             $table->timestamps();
         });
     }

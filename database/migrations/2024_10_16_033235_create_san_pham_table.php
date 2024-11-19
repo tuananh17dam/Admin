@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('ten_san_pham');
             
-            $table->float('gia_nhap');
-            $table->float('gia_ban');
-            $table->string('hinh_anh')->nullable();
+            $table->integer('gia_nhap');
+            $table->integer('gia_ban');
+            $table->string('hinh_anh', 255); 
             $table->timestamps();
         });
     }

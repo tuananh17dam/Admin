@@ -19,7 +19,7 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="index" class="d-block auth-logo">
-                                            <img src="{{ URL::asset('/build/images/logo-sm.svg') }}" alt="" height="28">
+                                            <img src="{{ URL::asset('/build/images/logo-01.png') }}" alt="" height="28">
                                             <span class="logo-txt">Minia</span>
                                         </a>
                                     </div>

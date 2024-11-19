@@ -12,10 +12,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-body">
-                <form action="{{ route('don-hang.store') }}" method="POST" id="donHangForm">
-                    @csrf
-                    <!-- Chọn khách hàng -->
+            <div class="card-body"> 
+            <form action="{{ route('don-hang.store') }}" method="POST" id="donHangForm">
+                    @csrf  
                     <div class="mb-3">
                         <label for="khach_hang_id" class="form-label">Khách hàng</label>
                         <select name="khach_hang_id" id="khach_hang_id" class="form-control" required>
@@ -25,6 +24,19 @@
                             @endforeach
                         </select>
                     </div>
+
+
+                    <!-- chọn người bán -->
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">Bán hàng</label>
+                        <select name="user_id" id="user_id" class="form-control" required>
+                            <option value="">Chọn nhà bán hàng</option>
+                            @foreach ($users as $taiKhoan)
+                            <option value="{{ $taiKhoan->id }}">{{ $taiKhoan->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
 
                     <!-- Danh sách sản phẩm -->
                     <div class="mb-3">
@@ -102,9 +114,10 @@
                     <div class="mb-3">
                         <label for="tinh_trang" class="form-label">Tình trạng</label>
                         <select name="tinh_trang" id="tinh_trang" class="form-control" required>
-                            <option value="chua_giao">Chưa giao</option>
-                            <option value="da_giao">Đã giao</option>
-                            <option value="huy_don">Hủy đơn</option>
+                            <option value="Chưa giao">Chưa giao</option>
+                            <option value="Đã giao">Đã giao</option>
+                            <option value="Hủy đơn">Hủy đơn</option>
+                            <option value="Hoàn hàng">Hoàn hàng</option>
                         </select>
                     </div>
 
@@ -264,3 +277,5 @@
 
 </script>
 @endsection
+
+

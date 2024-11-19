@@ -53,7 +53,7 @@
         width: 50px;
     }
 
-    
+
     th:nth-child(2),
     td:nth-child(2) {
         width: 120px;
@@ -64,7 +64,7 @@
         width: 120px;
     }
 
-   
+
 
     th:nth-child(4),
     td:nth-child(4) {
@@ -75,7 +75,6 @@
     td:nth-child(5) {
         width: 200px;
     }
-
 </style>
 @endsection
 
@@ -100,7 +99,7 @@
 
                 <div class="row mb-4">
                     <div class="col-sm">
-                        <a href="them-don-hang" class="btn btn-light waves-effect waves-light">
+                        <a href=" {{ route('don-hang.create')}}" class="btn btn-light waves-effect waves-light">
                             <i class="bx bx-plus me-1"></i> Thêm đơn hàng
                         </a>
                     </div>
@@ -112,10 +111,12 @@
                             <tr>
                                 <th style="text-align: center">ID</th>
                                 <th style="text-align: center">Khách hàng</th>
-                                <th style="text-align: center">Tin nhắn</th>
-                                <th style="text-align: center">Phương thức thanh toán</th>
+                                <th style="text-align: center">Bán hàng</th>
+                                <th style="text-align: center; width: 600px;">Sản phẩm</th>
+                                <th style="text-align: center">PT thanh toán</th>
                                 <th style="text-align: center">Tổng thanh toán</th>
                                 <th style="text-align: center">Tình trạng</th>
+                                <th style="text-align: center">Ngày tạo</th>
                                 <th style="text-align: center">Hành động</th>
                             </tr>
                         </thead>
@@ -124,12 +125,24 @@
                             <tr>
                                 <td>{{ $donHang->id }}</td>
                                 <td class="ellipsis">{{ $donHang->khachHang->ten }}</td>
-                                <td class="ellipsis" title="{{ $donHang->tin_nhan }}">{{ $donHang->tin_nhan }}</td>
+                                <td class="ellipsis">{{ $donHang->user->name }}</td>
+                                <td class="ellipsis">
+                                    @foreach ($donHang->donHangSanPhams as $dhsp)
+                                    <div>
+                                        <span>{{ $dhsp->sanPham->ten_san_pham }}</span>-
+                                        <span>{{ $dhsp->so_luong }}</span> 
+                                        <!-- <span>Giá: {{ number_format($dhsp->sanPham->gia_ban, 0, ',', '.') }} VND</span> - -->
+                                        <!-- <span>Thành tiền: {{ number_format($dhsp->so_luong * $dhsp->sanPham->gia_ban, 0, ',', '.') }} VND</span> -->
+                                    </div>
+                                    @endforeach
+                                </td>
+
                                 <td class="ellipsis">{{ $donHang->phuong_thuc_thanh_toan}}</td>
                                 <td>{{ number_format($donHang->tong_thanh_toan, 0, ',', '.') }} VND</td>
                                 <td>{{ ucfirst($donHang->tinh_trang) }}</td>
+                                <td>{{ $donHang->created_at->format('d-m-Y') }}</td>
                                 <td class="action-buttons">
-                                    <a href="{{ route('don-hang.show', $donHang->id) }}" class="btn btn-info btn-sm">Xem
+                                    <a href="{{ route('don-hang.show', $donHang->id) }}" class="btn btn-info btn-sm">
                                         Chi Tiết</a>
                                     <a href="{{ route('don-hang.edit', $donHang->id) }}"
                                         class="btn btn-primary btn-sm">Sửa</a>

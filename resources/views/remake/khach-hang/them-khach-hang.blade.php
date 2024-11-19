@@ -4,7 +4,7 @@
 @section('content')
     <h1>Thêm khách hàng</h1>
 
-    <form action="{{ route('them-khach-hang.post') }}" method="POST">
+    <form action="{{ route('khach-hang.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="ten" class="form-label">Tên khách hàng</label>

@@ -48,9 +48,12 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        return view('auth.login');
     }
-    
+    public function login()
+    {
+        return view('auth.login');
+    }
 
     public function lang($locale)
     {

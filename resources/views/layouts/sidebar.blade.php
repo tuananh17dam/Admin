@@ -1,312 +1,137 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="vertical-menu">
 
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<div class="vertical-menu border-end" style="background-color: light;">
     <div data-simplebar class="h-100">
-
-        <!--- Sidemenu -->
+        <!-- Sidebar Menu -->
         <div id="sidebar-menu">
-            <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu">@lang('translation.Menu')</li>
-
-                <li>
-                    <a href="index">
-                        <i data-feather="home"></i>
-                        <span data-key="t-dashboard">@lang('translation.Dashboard')</span>
-                    </a>
+                <li class="menu-title text-center" style="color: #0077be; font-size: 1.75rem;">
+                    Menu
                 </li>
 
+                <!-- Home -->
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="grid"></i>
-                        <span data-key="t-apps">@lang('translation.Apps')</span>
+                    <a href="{{url('/index')}}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="home" class="me-2 icon-lg icon-static"></i>
+                        <span>Trang chủ</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="apps-calendar">
-                                <span data-key="t-calendar">@lang('translation.Calendar')</span>
-                            </a>
-                        </li>
+                </li><br>
 
-                        <li>
-                            <a href="apps-chat">
-                                <span data-key="t-chat">@lang('translation.Chat')</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-email">@lang('translation.Email')</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="apps-email-inbox" data-key="t-inbox">@lang('translation.Inbox')</a></li>
-                                <li><a href="apps-email-read" data-key="t-read-email">@lang('translation.Read_Email')</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-invoices">@lang('translation.Invoices')</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="apps-invoices-list" data-key="t-invoice-list">@lang('translation.Invoice_List')</a></li>
-                                <li><a href="apps-invoices-detail" data-key="t-invoice-detail">@lang('translation.Invoice_Detail')</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-contacts">@lang('translation.Contacts')</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="apps-contacts-grid" data-key="t-user-grid">@lang('translation.User_Grid')</a></li>
-                                <li><a href="apps-contacts-list" data-key="t-user-list">@lang('translation.User_List')</a></li>
-                                <li><a href="apps-contacts-profile" data-key="t-profile">@lang('translation.Profile')</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="">
-                                <span data-key="t-blog">@lang('translation.Blog')</span>
-                                <span class="badge rounded-pill badge-soft-danger float-end" key="t-new">New</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="apps-blog-grid" data-key="t-blog-grid">@lang('translation.Blog_grid')</a></li>
-                                <li><a href="apps-blog-list" data-key="t-blog-list">@lang('translation.Blog_list')</a></li>
-                                <li><a href="apps-blog-detail" data-key="t-blog-detail">@lang('translation.Blog_detail')</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
+                <!-- Admin Links -->
+                @if(auth()->user()->role === 'admin')
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="users"></i>
-                        <span data-key="t-authentication">@lang('translation.Authentication')</span>
+                    <a href="{{ url('/don-hang') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="shopping-cart" class="me-2 icon-lg icon-static"></i>
+                        <span>Đơn hàng</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="auth-login" data-key="t-login">@lang('translation.Login')</a></li>
-                        <li><a href="auth-register" data-key="t-register">@lang('translation.Register')</a></li>
-                        <li><a href="auth-recoverpw" data-key="t-recover-password">@lang('translation.Recover_Password')</a></li>
-                        <li><a href="auth-lock-screen" data-key="t-lock-screen">@lang('translation.Lock_Screen')</a>
-                        </li>
-                        <li><a href="auth-logout" data-key="t-logout">@lang('translation.Logout')</a>
-                        </li>
-                        <li><a href="auth-confirm-mail" data-key="t-confirm-mail">@lang('translation.Confirm_Mail')</a>
-                        </li>
-                        <li><a href="auth-email-verification" data-key="t-email-verification">@lang('translation.Email_Verification')</a></li>
-                        <li><a href="auth-two-step-verification" data-key="t-two-step-verification">@lang('translation.Two_Step_Verification')</a></li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-hoa-don">Quản lý hóa đơn</span>
+                    <a href="{{ url('/san-pham') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="box" class="me-2 icon-lg icon-static"></i>
+                        <span>Sản phẩm</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="danh-sach-hoa-don" data-key="t-danh-sach-hoa-don">Danh sách hóa đơn</a></li>
-                        <li><a href="chi-tiet-hoa-don" data-key="t-chi-tiet-hoa-don">Chi tiết hóa đơn</a> </li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-don-hang">Quản lý đơn hàng</span>
+                    <a href="{{ url('khach-hang') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="users" class="me-2 icon-lg icon-static"></i>
+                        <span>Khách hàng</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="danh-sach-don-hang" data-key="t-danh-sach-hoa-don">Danh sách đơn hàng</a></li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-san-pham">Sản phẩm</span>
+                    <a href="{{ url('/user') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="user-check" class="me-2 icon-lg icon-static"></i>
+                        <span>Tài khoản bán hàng</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="danh-sach-san-pham" data-key="t-danh-sach-san-pham">Danh sách sản phẩm</a></li>
-                    </ul>
-                </li>
-                
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-khach-hang">Khách hàng</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="danh-sach-khach-hang" data-key="t-danh-sach-khach-hang">Danh sách khách hàng</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-nguoi-dung">Người dùng</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="danh-sach-nguoi-dung" data-key="t-danh-sach-nguoi-dung">Danh sách khách hàng</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="layouts-horizontal">
-                        <i data-feather="layout"></i>
-                        <span data-key="t-horizontal">@lang('translation.Horizontal')</span>
+                    <a href="{{ url('/thong-ke') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="bar-chart-2" class="me-2 icon-lg icon-static"></i>
+                        <span>Thống kê</span>
                     </a>
                 </li>
+                @endif
 
-                <li class="menu-title mt-2" data-key="t-components">@lang('translation.Elements')</li>
-
+                <!-- Seller Links -->
+                @if(auth()->user()->role === 'seller')
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="briefcase"></i>
-                        <span data-key="t-components">@lang('translation.Components')</span>
+                    <a href="{{ url('donhang-seller') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="shopping-cart" class="me-2 icon-lg icon-static"></i>
+                        <span>Đơn hàng</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ui-alerts" data-key="t-alerts">@lang('translation.Alerts')</a></li>
-                        <li><a href="ui-buttons" data-key="t-buttons">@lang('translation.Buttons')</a></li>
-                        <li><a href="ui-cards" data-key="t-cards">@lang('translation.Cards')</a></li>
-                        <li><a href="ui-carousel" data-key="t-carousel">@lang('translation.Carousel')</a></li>
-                        <li><a href="ui-dropdowns" data-key="t-dropdowns">@lang('translation.Dropdowns')</a></li>
-                        <li><a href="ui-grid" data-key="t-grid">@lang('translation.Grid')</a></li>
-                        <li><a href="ui-images" data-key="t-images">@lang('translation.Images')</a></li>
-                        <li><a href="ui-modals" data-key="t-modals">@lang('translation.Modals')</a></li>
-                        <li><a href="ui-offcanvas" data-key="t-offcanvas">@lang('translation.Offcanvas')</a></li>
-                        <li><a href="ui-progressbars" data-key="t-progress-bars">@lang('translation.Progress_Bars')</a>
-                        </li>
-                        <li><a href="ui-placeholders" data-key="t-progress-bars">@lang('translation.Placeholders')</a></li>
-
-                        <li><a href="ui-tabs-accordions" data-key="t-tabs-accordions">@lang('translation.Tabs_n_Accordions')</a></li>
-                        <li><a href="ui-typography" data-key="t-typography">@lang('translation.Typography')</a></li>
-                        <li><a href="ui-toasts" data-key="t-typography">@lang('translation.Toast')</a></li>
-                        <li><a href="ui-video" data-key="t-video">@lang('translation.Video')</a></li>
-                        <li><a href="ui-general" data-key="t-general">@lang('translation.General')</a></li>
-                        <li><a href="ui-colors" data-key="t-colors">@lang('translation.Colors')</a></li>
-                        <li><a href="ui-utilities" data-key="t-utilities">@lang('translation.Utilities')</a></li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="gift"></i>
-                        <span data-key="t-ui-elements">@lang('translation.Extended')</span>
+                    <a href="{{ url('/san-pham') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="box" class="me-2 icon-lg icon-static"></i>
+                        <span>Sản phẩm</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="extended-lightbox" data-key="t-lightbox">@lang('translation.Lightbox')</a></li>
-                        <li><a href="extended-rangeslider" data-key="t-range-slider">@lang('translation.Range_Slider')</a></li>
-                        <li><a href="extended-sweet-alert" data-key="t-sweet-alert">@lang('translation.SweetAlert_2')</a></li>
-                        <li><a href="extended-session-timeout" data-key="t-session-timeout">@lang('translation.Session_Timeout')</a></li>
-                        <li><a href="extended-rating" data-key="t-rating">@lang('translation.Rating')</a></li>
-                        <li><a href="extended-notifications" data-key="t-notifications">@lang('translation.Notifications')</a></li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);">
-                        <i data-feather="box"></i>
-                        <span class="badge rounded-pill badge-soft-danger text-danger float-end">7</span>
-                        <span data-key="t-forms">@lang('translation.Forms')</span>
+                    <a href="{{ url('/khach-hang') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="users" class="me-2 icon-lg icon-static"></i>
+                        <span>Khách hàng</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="form-elements" data-key="t-form-elements">@lang('translation.Basic_Elements')</a>
-                        </li>
-                        <li><a href="form-validation" data-key="t-form-validation">@lang('translation.Validation')</a>
-                        </li>
-                        <li><a href="form-advanced" data-key="t-form-advanced">@lang('translation.Advanced_Plugins')</a>
-                        </li>
-                        <li><a href="form-editors" data-key="t-form-editors">@lang('translation.Editors')</a></li>
-                        <li><a href="form-uploads" data-key="t-form-upload">@lang('translation.File_Upload')</a></li>
-                        <li><a href="form-wizard" data-key="t-form-wizard">@lang('translation.Wizard')</a></li>
-                        <li><a href="form-mask" data-key="t-form-mask">@lang('translation.Mask')</a></li>
-                    </ul>
-                </li>
-
+                </li><br>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="sliders"></i>
-                        <span data-key="t-tables">@lang('translation.Tables')</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="tables-basic" data-key="t-basic-tables">@lang('translation.Bootstrap_Basic')</a>
-                        </li>
-                        <li><a href="tables-datatable" data-key="t-data-tables">@lang('translation.DataTables')</a></li>
-                        <li><a href="tables-responsive" data-key="t-responsive-table">@lang('translation.Responsive')</a></li>
-                        <li><a href="tables-editable" data-key="t-editable-table">@lang('translation.Editable')</a></li>
-                    </ul>
+                    <a href="{{ url('/thong-ke') }}" class="btn-sidebar d-flex align-items-center px-3 py-2 text-decoration-none">
+                        <i data-feather="bar-chart-2" class="me-2 icon-lg icon-static"></i>
+                        <span>Thống kê</span>
+                    </a><br>
                 </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="pie-chart"></i>
-                        <span data-key="t-charts">@lang('translation.Charts')</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="charts-apex" data-key="t-apex-charts">@lang('translation.Apexcharts')</a></li>
-                        <li><a href="charts-echart" data-key="t-e-charts">@lang('translation.Echarts')</a></li>
-                        <li><a href="charts-chartjs" data-key="t-chartjs-charts">@lang('translation.Chartjs')</a></li>
-                        <li><a href="charts-knob" data-key="t-knob-charts">@lang('translation.Jquery_Knob')</a></li>
-                        <li><a href="charts-sparkline" data-key="t-sparkline-charts">@lang('translation.Sparkline')</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="cpu"></i>
-                        <span data-key="t-icons">@lang('translation.Icons')</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="icons-boxicons" data-key="t-boxicons">@lang('translation.Boxicons')</a></li>
-                        <li><a href="icons-materialdesign" data-key="t-material-design">@lang('translation.Material_Design')</a></li>
-                        <li><a href="icons-dripicons" data-key="t-dripicons">@lang('translation.Dripicons')</a></li>
-                        <li><a href="icons-fontawesome" data-key="t-font-awesome">@lang('translation.Font_Awesome_5')</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="map"></i>
-                        <span data-key="t-maps">@lang('translation.Maps')</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="maps-google" data-key="t-g-maps">@lang('translation.Google')</a></li>
-                        <li><a href="maps-vector" data-key="t-v-maps">@lang('translation.Vector')</a></li>
-                        <li><a href="maps-leaflet" data-key="t-l-maps">@lang('translation.Leaflet')</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="share-2"></i>
-                        <span data-key="t-multi-level">@lang('translation.Multi_Level')</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);" data-key="t-level-1-1">@lang('translation.Level_1_1')</a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" data-key="t-level-1-2">@lang('translation.Level_1_2')</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);" data-key="t-level-2-1">@lang('translation.Level_2_1')</a></li>
-                                <li><a href="javascript: void(0);" data-key="t-level-2-2">@lang('translation.Level_2_2')</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
+                @endif
             </ul>
-
-            <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
-                <div class="card-body">
-                    <img src="build/images/giftbox.png" alt="">
-                    <div class="mt-4">
-                        <h5 class="alertcard-title font-size-16">@lang('translation.Unlimited_Access')</h5>
-                        <p class="font-size-13">
-                            @lang("translation.Upgrade_your_plan_from_a_Free_trial,_to_select_‘Business_Plan’").</p>
-                        <a href="#!" class="btn btn-primary mt-2">@lang('translation.Upgrade_Now')</a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- Sidebar -->
     </div>
 </div>
 <!-- Left Sidebar End -->
+
+<style>
+    .vertical-menu {
+        width: 250px;
+    }
+
+    .btn-sidebar {
+        color: black !important; /* Đảm bảo chữ luôn là đen */
+        font-size: 1.1rem;
+        font-weight: 500;
+        background-color: white;
+        border-radius: 8px;
+    }
+
+    .btn-sidebar:hover,
+    .btn-sidebar.active,
+    .btn-sidebar:focus {
+        color: black !important; /* Đảm bảo chữ luôn là đen khi hover, active, focus */
+        background-color: #00FFFF;
+    }
+
+    .icon-lg {
+        font-size: 1.3em;
+    }
+
+    .icon-static {
+        color: inherit !important; /* Giữ màu của icon theo màu mặc định */
+    }
+
+    .menu-title {
+        color: #0077be;
+        font-size: 1.75rem;
+    }
+
+    .sidebar-menu {
+        background-color: white;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        feather.replace();
+    });
+</script>
